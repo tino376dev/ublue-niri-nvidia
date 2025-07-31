@@ -16,6 +16,9 @@ dnf5 install -y micro nautilus niri openfortivpn
 # disable sway as session option
 mv /usr/share/wayland-sessions/sway.desktop /usr/share/wayland-sessions/sway.desktop.disabled
 
+# set default wallpaper
+curl -o /usr/share/backgrounds/default.jxl https://raw.githubusercontent.com/tino376dev/dotfiles/main/.config/wallpaper/cosmic-blur.jpg
+sed -i 's/jxl/jpg/g' /usr/share/sddm/themes/03-sway-fedora/theme.conf
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
