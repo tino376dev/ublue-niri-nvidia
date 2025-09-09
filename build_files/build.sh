@@ -4,28 +4,23 @@ set -ouex pipefail
 
 ### Install packages
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# enable niri copr
+dnf copr -y enable yalter/niri
 
-# this installs a package from fedora repos
-dnf5 install -y micro nautilus niri openfortivpn
-# dnfr uninstall -y sway
+# install
+dnf install -y gcc micro nautilus niri openfortivpn
+
+# remove
+dnf remove -y firefox
+
+# clean
+dnf clean all
 
 # disable sway as session option
-mv /usr/share/wayland-sessions/sway.desktop /usr/share/wayland-sessions/sway.desktop.disabled
+# mv /usr/share/wayland-sessions/sway.desktop /usr/share/wayland-sessions/sway.desktop.disabled
 
-# set default wallpaper
-curl -o /usr/share/backgrounds/default.jpg https://raw.githubusercontent.com/tino376dev/dotfiles/main/.config/wallpaper/cosmic-blur.jpg
-sed -i 's/jxl/jpg/g' /usr/share/sddm/themes/03-sway-fedora/theme.conf
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+# flatpaks
+/usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-#### Example for enabling a System Unit File
-
+# podman socket
 systemctl enable podman.socket
