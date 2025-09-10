@@ -21,7 +21,7 @@ nu -c 'http get https://api.github.com/repos/catppuccin/sddm/releases/latest | g
 unzip -o catppuccin.zip -d /usr/share/sddm/themes
 rm catppuccin.zip
 # curl -o /usr/share/wallpapers/cosmic.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic.jpg
-curl -o /usr/share/sddm/themes/catppuccin-mocha-lavender/backgrounds/wall.png wallpapers/cosmic-blur.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic-blur.jpg
+curl -o /usr/share/sddm/themes/catppuccin-mocha-lavender/backgrounds/wall.png https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic-blur.png
 # disable sway as session option
 # mv /usr/share/wayland-sessions/sway.desktop /usr/share/wayland-sessions/sway.desktop.disabled
 
