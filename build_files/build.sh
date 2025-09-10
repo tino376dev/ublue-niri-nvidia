@@ -20,8 +20,8 @@ dnf clean all
 nu -c 'http get https://api.github.com/repos/catppuccin/sddm/releases/latest | get $.assets.browser_download_url | where ($it | str ends-with "catppuccin-mocha-lavender-sddm.zip") | get 0 | http get $in | save -r "catppuccin.zip"'
 unzip -o catppuccin.zip -d /usr/share/sddm/themes
 rm catppuccin.zip
-curl -o /usr/share/wallpapers/cosmic.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic.jpg
-curl -o /usr/share/wallpapers/cosmic-blur.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic-blur.jpg
+# curl -o /usr/share/wallpapers/cosmic.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic.jpg
+curl -o /usr/share/sddm/themes/catppuccin-mocha-lavender/backgrounds/wall.png wallpapers/cosmic-blur.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic-blur.jpg
 # disable sway as session option
 # mv /usr/share/wayland-sessions/sway.desktop /usr/share/wayland-sessions/sway.desktop.disabled
 
