@@ -20,10 +20,7 @@ dnf clean all
 nu -c 'http get https://api.github.com/repos/catppuccin/sddm/releases/latest | get $.assets.browser_download_url | where ($it | str ends-with "catppuccin-mocha-lavender-sddm.zip") | get 0 | http get $in | save -r "catppuccin.zip"'
 unzip -o catppuccin.zip -d /usr/share/sddm/themes
 rm catppuccin.zip
-# curl -o /usr/share/wallpapers/cosmic.jpg https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic.jpg
-curl -o /usr/share/sddm/themes/catppuccin-mocha-lavender/backgrounds/wall.png https://raw.githubusercontent.com/tino376dev/dofiles/.config/wallpapers/cosmic-blur.png
-# disable sway as session option
-# mv /usr/share/wayland-sessions/sway.desktop /usr/share/wayland-sessions/sway.desktop.disabled
+nu -c 'http get https://raw.github.com/tino376dev/files/main/cosmic-blur.png | save -rf /usr/share/sddm/themes/catppuccin-mocha-lavender/backgrounds/wall.png'
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
