@@ -19,7 +19,7 @@ dnf clean all
 
 # sddm theme
 rm -rf /urs/share/sddm/themes/03-sway-fedora/*
-git clone git@github.com:tino376dev/sddm-theme.git /urs/share/sddm/themes/03-sway-fedora
+git clone https://github.com/tino376dev/sddm-theme.git /urs/share/sddm/themes/03-sway-fedora
 rm -rf /urs/share/sddm/themes/03-sway-fedora/.git
 
 # flatpaks
