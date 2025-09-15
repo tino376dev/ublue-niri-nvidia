@@ -4,11 +4,12 @@ set -ouex pipefail
 
 ### Install packages
 
-# enable niri copr
+# enable copr repos
 dnf copr -y enable yalter/niri
+dnf copr enable atim/starship
 
 # install
-dnf install -y gcc micro nautilus niri nu openfortivpn
+dnf install -y bat fd-find gcc helix micro nautilus niri nu openfortivpn ripgrep starship zoxide
 
 # remove
 dnf remove -y firefox
