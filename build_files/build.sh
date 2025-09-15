@@ -6,7 +6,7 @@ set -ouex pipefail
 
 # enable copr repos
 dnf copr -y enable yalter/niri
-dnf copr enable atim/starship
+dnf copr -y enable atim/starship
 
 # install
 dnf install -y bat fd-find gcc helix micro nautilus niri nu openfortivpn ripgrep starship zoxide
