@@ -18,9 +18,9 @@ dnf remove -y firefox
 dnf clean all
 
 # sddm theme
-rm -rf /urs/share/sddm/themes/03-sway-fedora/*
-git clone https://github.com/tino376dev/sddm-theme.git /urs/share/sddm/themes/03-sway-fedora
-rm -rf /urs/share/sddm/themes/03-sway-fedora/.git
+mkdir /urs/share/sddm/themes/tino376dev
+git clone https://github.com/tino376dev/sddm-theme.git /urs/share/sddm/themes/tino376dev
+rm -rf /urs/share/sddm/themes/tino376dev/.git
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
