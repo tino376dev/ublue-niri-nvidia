@@ -18,11 +18,9 @@ dnf remove -y firefox
 dnf clean all
 
 # sddm theme
-nu -c 'http get https://api.github.com/repos/catppuccin/sddm/releases/latest | get $.assets.browser_download_url | where ($it | str ends-with "catppuccin-mocha-lavender-sddm.zip") | get 0 | http get $in | save -r "catppuccin.zip"'
-unzip -o catppuccin.zip -d /usr/share/sddm/themes
-rm catppuccin.zip
-nu -c 'http get https://raw.github.com/tino376dev/files/main/cosmic-blur.png | save -rf /usr/share/sddm/themes/catppuccin-mocha-lavender/backgrounds/wall.png'
-nu -c 'open -r /usr/share/sddm/themes/catppuccin-mocha-lavender/theme.conf | str replace ''UserIcon="false"'' ''UserIcon="true"'' | save -rf /usr/share/sddm/themes/catppuccin-mocha-lavender/theme.conf'
+rm -rf /urs/share/sddm/themes/03-sway-fedora/*
+git clone git@github.com:tino376dev/sddm-theme.git /urs/share/sddm/themes/03-sway-fedora
+rm -rf /urs/share/sddm/themes/03-sway-fedora/.git
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
