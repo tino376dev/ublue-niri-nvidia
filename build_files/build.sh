@@ -10,7 +10,22 @@ dnf copr -y enable atim/starship
 dnf copr -y enable lihaohong/yazi
 
 # install
-dnf install -y bat du-dust fd-find fish gcc helix micro nautilus niri nu openfortivpn ripgrep starship yazi zoxide
+dnf install -y \
+  bat \
+  du-dust \
+  fd-find \
+  fish \
+  gcc \
+  helix \
+  micro \
+  nautilus \
+  niri \
+  nu \
+  openfortivpn \
+  ripgrep \
+  starship \
+  yazi \
+  zoxide
 
 # remove
 dnf remove -y firefox
