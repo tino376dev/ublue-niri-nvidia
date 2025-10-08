@@ -9,7 +9,7 @@ dnf copr -y enable yalter/niri
 dnf copr -y enable atim/starship
 
 # install
-dnf install -y bat fd-find fish gcc helix micro nautilus niri nu openfortivpn ripgrep starship zoxide
+dnf install -y bat du-dust fd-find fish gcc helix micro nautilus niri nu openfortivpn ripgrep starship zoxide
 
 # remove
 dnf remove -y firefox
