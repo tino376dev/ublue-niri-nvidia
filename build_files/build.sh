@@ -17,6 +17,7 @@ dnf install -y \
   fish \
   gcc \
   helix \
+  git-delta \
   micro \
   nautilus \
   niri \
