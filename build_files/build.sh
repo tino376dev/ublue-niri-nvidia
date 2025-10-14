@@ -8,6 +8,7 @@ set -ouex pipefail
 dnf copr -y enable yalter/niri
 dnf copr -y enable atim/starship
 dnf copr -y enable lihaohong/yazi
+dnf copr -y enable scottames/ghostty
 
 # install
 dnf install -y \
@@ -18,6 +19,7 @@ dnf install -y \
   gcc \
   helix \
   git-delta \
+  ghostty \
   micro \
   nautilus \
   niri \
