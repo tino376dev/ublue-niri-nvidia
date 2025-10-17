@@ -5,10 +5,11 @@ set -ouex pipefail
 ### Install packages
 
 # enable copr repos
-dnf copr -y enable yalter/niri
+dnf copr -y enable atim/nushell
 dnf copr -y enable atim/starship
 dnf copr -y enable lihaohong/yazi
 dnf copr -y enable scottames/ghostty
+dnf copr -y enable yalter/niri
 
 # install
 dnf install -y \
