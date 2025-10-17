@@ -24,7 +24,7 @@ dnf install -y \
   micro \
   nautilus \
   niri \
-  nu \
+  nushell \
   openfortivpn \
   ripgrep \
   starship \
