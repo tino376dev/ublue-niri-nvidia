@@ -5,7 +5,6 @@ set -ouex pipefail
 ### Install packages
 
 # enable copr repos
-dnf copr -y enable atim/nushell
 dnf copr -y enable atim/starship
 dnf copr -y enable lihaohong/yazi
 dnf copr -y enable scottames/ghostty
@@ -24,7 +23,6 @@ dnf install -y \
   micro \
   nautilus \
   niri \
-  nushell \
   openfortivpn \
   ripgrep \
   starship \
@@ -36,6 +34,12 @@ dnf remove -y firefox
 
 # clean
 dnf clean all
+
+# nushell and official plugin binaries
+curl -s https://api.github.com/repos/nushell/nushell/releases/latest | grep browser_download_url | grep x86_64-unknown-linux-gnu.tar.gz | cut -d '"' -f 4 | xargs curl -LO
+tar -xzf nu-*-x86_64-unknown-linux-gnu.tar.gz
+mv nu*/nu* /usr/bin/
+rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
 
 # sddm theme
 mkdir /usr/share/sddm/themes/tino376dev
