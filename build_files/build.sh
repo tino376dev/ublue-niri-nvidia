@@ -42,9 +42,9 @@ mv nu*/nu* /usr/bin/
 rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
 
 # sddm theme
-mkdir /usr/share/sddm/themes/tino376dev
-git clone https://github.com/tino376dev/sddm-theme.git /usr/share/sddm/themes/tino376dev
-rm -rf /usr/share/sddm/themes/tino376dev/.git
+# mkdir /usr/share/sddm/themes/tino376dev
+# git clone https://github.com/tino376dev/sddm-theme.git /usr/share/sddm/themes/tino376dev
+# rm -rf /usr/share/sddm/themes/tino376dev/.git
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
