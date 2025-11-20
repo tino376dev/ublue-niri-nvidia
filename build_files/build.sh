@@ -21,6 +21,9 @@ EOF
 
 dnf makecache
 
+dnf config-manager setopt google-chrome.enabled=1
+mkdir /var/opt
+
 # install
 dnf install -y \
   antigravity \
@@ -29,6 +32,7 @@ dnf install -y \
   fd-find \
   fish \
   gcc \
+  google-chrome-stable \
   helix \
   git-delta \
   ghostty \
