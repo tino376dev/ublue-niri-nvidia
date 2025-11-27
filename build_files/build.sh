@@ -13,6 +13,7 @@ dnf copr -y enable yalter/niri
 # install
 dnf install -y \
   bat \
+  brightnessctl \
   du-dust \
   fd-find \
   fish \
