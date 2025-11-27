@@ -57,3 +57,13 @@ curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz 
 
 # podman socket
 systemctl enable podman.socket
+
+# systemd units
+cp /ctx/systemd/*.service /usr/lib/systemd/user/
+
+# niri wants
+mkdir -p /usr/lib/systemd/user/niri.service.wants
+ln -sf /usr/lib/systemd/user/waybar.service /usr/lib/systemd/user/niri.service.wants/waybar.service
+ln -sf /usr/lib/systemd/user/mako.service /usr/lib/systemd/user/niri.service.wants/mako.service
+ln -sf /usr/lib/systemd/user/swaybg.service /usr/lib/systemd/user/niri.service.wants/swaybg.service
+ln -sf /usr/lib/systemd/user/awww-daemon.service /usr/lib/systemd/user/niri.service.wants/awww-daemon.service

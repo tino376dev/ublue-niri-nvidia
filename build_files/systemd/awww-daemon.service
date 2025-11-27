@@ -1,0 +1,10 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=awww-daemon --layer bottom
+ExecStartPost=/bin/sleep 10
+ExecStartPost=%h/.local/bin/awww-wallpaper.sh
+Restart=on-failure
