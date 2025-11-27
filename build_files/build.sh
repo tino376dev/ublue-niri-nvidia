@@ -67,3 +67,6 @@ ln -sf /usr/lib/systemd/user/waybar.service /usr/lib/systemd/user/niri.service.w
 ln -sf /usr/lib/systemd/user/mako.service /usr/lib/systemd/user/niri.service.wants/mako.service
 ln -sf /usr/lib/systemd/user/swaybg.service /usr/lib/systemd/user/niri.service.wants/swaybg.service
 ln -sf /usr/lib/systemd/user/awww-daemon.service /usr/lib/systemd/user/niri.service.wants/awww-daemon.service
+
+# executables
+cp /ctx/bin/*.sh /usr/bin/

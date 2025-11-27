@@ -4,5 +4,5 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=%h/.local/bin/swaybg-wallpaper.sh
+ExecStart=/usr/bin/swaybg-wallpaper.sh
 Restart=on-failure
