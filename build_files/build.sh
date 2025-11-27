@@ -26,6 +26,7 @@ dnf install -y \
   niri \
   openfortivpn \
   ripgrep \
+  sddm \
   starship \
   pavucontrol \
   yazi \
@@ -59,6 +60,10 @@ curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz 
 
 # podman socket
 systemctl enable podman.socket
+
+# display manager
+systemctl disable gdm
+systemctl enable sddm
 
 # systemd units
 cp /ctx/systemd/*.service /usr/lib/systemd/user/
