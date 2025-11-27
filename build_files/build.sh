@@ -26,6 +26,7 @@ dnf install -y \
   openfortivpn \
   ripgrep \
   starship \
+  pavucontrol \
   yazi \
   zoxide
 
