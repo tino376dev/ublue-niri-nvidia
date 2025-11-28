@@ -51,11 +51,9 @@ curl -sSL $(echo "$assets" | grep awww-linux-amd64.tar.gz | cut -d '"' -f 4) | t
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
 
 # sddm theme
-mkdir /usr/share/sddm/themes/tino376dev
-git clone https://github.com/tino376dev/sddm-theme.git /usr/share/sddm/themes/tino376dev
-rm -rf /usr/share/sddm/themes/tino376dev/.git
-rm -f /usr/share/sddm/themes/tino376dev/backgrounds/wall.png
-ln -s /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/tino376dev/backgrounds/wall.png
+cp -r /ctx/theme /usr/share/sddm/themes/default
+mkdir -p /usr/share/sddm/themes/default/backgrounds
+ln -s /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/default/backgrounds/wall.png
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
