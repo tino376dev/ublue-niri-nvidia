@@ -8,10 +8,12 @@ set -ouex pipefail
 dnf copr -y enable atim/starship
 dnf copr -y enable lihaohong/yazi
 dnf copr -y enable scottames/ghostty
+dnf copr -y enable scottames/awww
 dnf copr -y enable yalter/niri
 
 # install
 dnf install -y \
+  awww \
   bat \
   brightnessctl \
   du-dust \
@@ -47,7 +49,6 @@ rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
 
 # get some extra binaries
 assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/latest | grep browser_download_url)
-curl -sSL $(echo "$assets" | grep awww-linux-amd64.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/bin
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
 
 # sddm theme
