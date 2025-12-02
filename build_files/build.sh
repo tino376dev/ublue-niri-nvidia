@@ -11,11 +11,19 @@ dnf copr -y enable scottames/ghostty
 dnf copr -y enable scottames/awww
 dnf copr -y enable yalter/niri
 
+# switch to cosmic
+dnf swap -y fedora-release-identity-silverblue.noarch fedora-release-identity-cosmic-atomic.noarch
+
+# remove
+dnf remove -y firefox gnome-\*
+
+
 # install
 dnf install -y \
   awww \
   bat \
   brightnessctl \
+  @cosmic-desktop \
   du-dust \
   fd-find \
   fish \
@@ -28,14 +36,12 @@ dnf install -y \
   niri \
   openfortivpn \
   ripgrep \
-  sddm \
   starship \
   pavucontrol \
   yazi \
   zoxide
 
-# remove
-dnf remove -y firefox
+
 
 # clean
 dnf clean all
@@ -51,20 +57,11 @@ rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
 assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/latest | grep browser_download_url)
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
 
-# sddm theme
-cp -r /ctx/theme /usr/share/sddm/themes/default
-mkdir -p /usr/share/sddm/themes/default/backgrounds
-ln -s /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/default/backgrounds/wall.png
-
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # podman socket
 systemctl enable podman.socket
-
-# display manager
-systemctl disable gdm
-systemctl enable sddm
 
 # systemd units
 cp /ctx/systemd/*.service /usr/lib/systemd/user/
