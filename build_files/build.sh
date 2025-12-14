@@ -5,11 +5,8 @@ set -ouex pipefail
 ### Install packages
 
 # enable copr repos
-dnf copr -y enable atim/starship
-dnf copr -y enable atim/nushell
-dnf copr -y enable lihaohong/yazi
 dnf copr -y enable scottames/awww
-dnf copr -y enable scottames/ghostty
+dnf copr -y enable ublue-os/packages
 dnf copr -y enable yalter/niri
 
 # remove
@@ -18,26 +15,14 @@ dnf remove -y firefox
 
 # install
 dnf install -y \
-  awww \
-  bat \
-  brightnessctl \
   @cosmic-desktop \
-  du-dust \
-  fd-find \
-  fish \
-  helix \
-  git-delta \
-  ghostty \
-  micro \
+  awww \
+  brightnessctl \
   nautilus \
   niri \
-  nushell \
   openfortivpn \
-  ripgrep \
-  starship \
   pavucontrol \
-  yazi \
-  zoxide
+  ublue-brew
 
 # clean
 dnf clean all
@@ -63,9 +48,22 @@ ln -sf /usr/lib/systemd/user/mako.service /usr/lib/systemd/user/niri.service.wan
 ln -sf /usr/lib/systemd/user/swaybg.service /usr/lib/systemd/user/niri.service.wants/swaybg.service
 ln -sf /usr/lib/systemd/user/awww-daemon.service /usr/lib/systemd/user/niri.service.wants/awww-daemon.service
 
-curl -o /usr/share/bin/start-cosmic-ext-niri https://github.com/Drakulix/cosmic-ext-extra-sessions/blob/main/niri/start-cosmic-ext-niri
-chmod +x /usr/share/bin/start-cosmic-ext-niri
-curl -o /usr/share/wayland-sessions/cosmic-ext-niri.desktop https://github.com/Drakulix/cosmic-ext-extra-sessions/blob/main/niri/cosmic-ext-niri.desktop
-
 # executables
 cp /ctx/bin/*.sh /usr/bin/
+
+# justfiles
+mkdir -p /usr/share/ublue-os/just
+cp /ctx/just/*.just /usr/share/ublue-os/just/
+
+# brewfile
+cp /ctx/Brewfile /usr/share/ublue-os/
+
+curl -o /usr/bin/start-cosmic-ext-niri https://raw.githubusercontent.com/Drakulix/cosmic-ext-extra-sessions/main/niri/start-cosmic-ext-niri
+curl -o /usr/share/wayland-sessions/cosmic-ext-niri.desktop https://raw.githubusercontent.com/Drakulix/cosmic-ext-extra-sessions/main/niri/cosmic-niri.desktop
+sed -i 's|/usr/local/bin|/usr/bin|g' /usr/share/wayland-sessions/cosmic-ext-niri.desktop
+chmod +x /usr/bin/start-cosmic-ext-niri
+
+dnf copr -y remove scottames/awww
+dnf copr -y remove ublue-os/packages
+dnf copr -y remove yalter/niri
+
