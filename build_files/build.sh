@@ -6,6 +6,7 @@ set -ouex pipefail
 
 # enable copr repos
 dnf copr -y enable scottames/awww
+dnf copr -y enable scottames/ghostty
 dnf copr -y enable ublue-os/packages
 dnf copr -y enable yalter/niri
 
@@ -19,6 +20,7 @@ dnf install -y \
   awww \
   brightnessctl \
   micro \
+  ghostty \
   nautilus \
   niri \
   openfortivpn \
@@ -65,6 +67,7 @@ sed -i 's|/usr/local/bin|/usr/bin|g' /usr/share/wayland-sessions/cosmic-ext-niri
 chmod +x /usr/bin/start-cosmic-ext-niri
 
 dnf copr -y remove scottames/awww
+dnf copr -y remove scottames/ghostty
 dnf copr -y remove ublue-os/packages
 dnf copr -y remove yalter/niri
 
