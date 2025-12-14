@@ -18,6 +18,7 @@ dnf install -y \
   @cosmic-desktop \
   awww \
   brightnessctl \
+  micro \
   nautilus \
   niri \
   openfortivpn \
