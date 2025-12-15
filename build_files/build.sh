@@ -5,10 +5,9 @@ set -ouex pipefail
 ### Install packages
 
 # enable copr repos
-dnf copr -y enable atim/starship
-dnf copr -y enable lihaohong/yazi
-dnf copr -y enable scottames/ghostty
 dnf copr -y enable scottames/awww
+dnf copr -y enable scottames/ghostty
+dnf copr -y enable ublue-os/packages
 dnf copr -y enable yalter/niri
 
 # install
@@ -66,6 +65,16 @@ systemctl enable podman.socket
 systemctl disable gdm
 systemctl enable sddm
 
+# executables
+cp /ctx/bin/*.sh /usr/bin/
+
+# justfiles
+mkdir -p /usr/share/ublue-os/just
+cp /ctx/just/*.just /usr/share/ublue-os/just/
+
+# brewfile
+cp /ctx/Brewfile /usr/share/ublue-os/
+
 # systemd units
 cp /ctx/systemd/*.service /usr/lib/systemd/user/
 
@@ -76,5 +85,7 @@ ln -sf /usr/lib/systemd/user/mako.service /usr/lib/systemd/user/niri.service.wan
 ln -sf /usr/lib/systemd/user/swaybg.service /usr/lib/systemd/user/niri.service.wants/swaybg.service
 ln -sf /usr/lib/systemd/user/awww-daemon.service /usr/lib/systemd/user/niri.service.wants/awww-daemon.service
 
-# executables
-cp /ctx/bin/*.sh /usr/bin/
+dnf copr -y remove scottames/awww
+dnf copr -y remove scottames/ghostty
+dnf copr -y remove ublue-os/packages
+dnf copr -y remove yalter/niri
