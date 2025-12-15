@@ -13,25 +13,15 @@ dnf copr -y enable yalter/niri
 # install
 dnf install -y \
   awww \
-  bat \
   brightnessctl \
-  du-dust \
-  fd-find \
-  fish \
-  gcc \
-  helix \
-  git-delta \
-  ghostty \
   micro \
+  ghostty \
   nautilus \
   niri \
+  nu \
   openfortivpn \
-  ripgrep \
-  sddm \
-  starship \
   pavucontrol \
-  yazi \
-  zoxide
+  ublue-brew
 
 # remove
 dnf remove -y firefox
