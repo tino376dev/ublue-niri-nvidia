@@ -21,6 +21,7 @@ dnf install -y \
   nu \
   openfortivpn \
   pavucontrol \
+  sddm \
   ublue-brew
 
 # remove
