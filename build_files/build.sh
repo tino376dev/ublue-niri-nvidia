@@ -41,8 +41,8 @@ assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/lat
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
 
 # sddm theme
-cp -r /ctx/theme /usr/share/sddm/themes/default
 mkdir -p /usr/share/sddm/themes/default/backgrounds
+cp -r /ctx/theme /usr/share/sddm/themes/default
 ln -s /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/default/backgrounds/wall.png
 
 # flatpaks
@@ -58,11 +58,9 @@ systemctl enable sddm
 # executables
 cp /ctx/bin/*.sh /usr/bin/
 
-# justfiles
+# just + brew
 mkdir -p /usr/share/ublue-os/just
 cp /ctx/just/*.just /usr/share/ublue-os/just/
-
-# brewfile
 cp /ctx/Brewfile /usr/share/ublue-os/
 
 # systemd units
