@@ -37,14 +37,15 @@ mv nu*/nu* /usr/bin/
 rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
 
 
-# get some extra binaries
+# get some extra binaries/assets
 assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/latest | grep browser_download_url)
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
 
 # sddm theme
-mkdir -p /usr/share/sddm/themes/default/backgrounds
-cp -r /ctx/theme /usr/share/sddm/themes/default
-ln -s /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/default/backgrounds/wall.png
+mkdir -p /usr/share/sddm/themes/
+cp -r /ctx/sddm /usr/share/sddm/themes
+ln -s /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/light/backgrounds/wall.png
+ln -s /usr/share/backgrounds/dark-blur.png /usr/share/sddm/themes/dark/backgrounds/wall.png
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
