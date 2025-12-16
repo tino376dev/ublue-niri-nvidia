@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+action=${1:-install}
+
+if [ "$action" == "install" ]; then
+  # Create the distrobox container
+  if ! distrobox list | grep -q "microsoft"; then
+    distrobox-create \
+      --name microsoft \
+      --image registry.fedoraproject.org/fedora-toolbox:latest \
+      --volume /home/linuxbrew/.linuxbrew:/home/linuxbrew/.linuxbrew:ro,z \
+      --additional-packages "xdg-desktop-portal" \
+      --yes
+  else
+    echo "Container 'microsoft' already exists. Proceeding to install packages..."
+  fi
+
+  # Install packages inside the container
+  distrobox-enter --name microsoft -- bash -c '
+  # set up sharing
+  sudo ln -s /run/host/run/systemd/system /run/systemd
+  sudo mkdir -p /run/dbus
+  sudo ln -s /run/host/run/dbus/system_bus_socket /run/dbus/system_bus_socket
+  # microsoft signing keys
+  sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+  # install microsoft edge
+  sudo dnf config-manager addrepo --from-repofile https://packages.microsoft.com/yumrepos/edge/config.repo --save-filename edge
+  sudo dnf -y install microsoft-edge-stable
+  distrobox-export --app microsoft-edge-stable --export-label none
+  # install vscode
+  sudo dnf config-manager addrepo --from-repofile https://packages.microsoft.com/yumrepos/vscode/config.repo --save-filename vscode
+  sudo dnf -y install code-insiders
+  distrobox-export --app code-insiders --export-label none
+  '
+
+elif [ "$action" == "update" ]; then
+  if distrobox list | grep -q "microsoft"; then
+    echo "Updating 'microsoft' container..."
+    distrobox-enter --name microsoft -- sudo dnf update -y
+  else
+    echo "Container 'microsoft' does not exist. Please run install first."
+    exit 1
+  fi
+else
+  echo "Usage: $0 [install|update]"
+  exit 1
+fi
