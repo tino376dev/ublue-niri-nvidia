@@ -3,10 +3,10 @@ brew-sync:
     echo 'Syncing homebrew packages...'
     brew bundle --file=/usr/share/ublue-os/Brewfile
 
-# Setup Google container (usage: just setup-google [install|update])
-setup-google action="install":
+# Setup Google container (usage: just google [install|update])
+google action="install":
     @/usr/bin/setup-google-container.sh {{action}}
 
-# Setup Microsoft container (usage: just setup-microsoft [install|update])
-setup-microsoft action="install":
+# Setup Microsoft container (usage: just microsoft [install|update])
+microsoft action="install":
     @/usr/bin/setup-microsoft-container.sh {{action}}
