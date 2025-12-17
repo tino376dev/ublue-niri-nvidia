@@ -6,5 +6,5 @@ Requisite=graphical-session.target
 [Service]
 ExecStart=awww-daemon --layer bottom
 ExecStartPost=/bin/sleep 10
-ExecStartPost=%h/.local/bin/awww-wallpaper.sh
+ExecStartPost=/usr/bin/awww-wallpaper.sh
 Restart=on-failure
