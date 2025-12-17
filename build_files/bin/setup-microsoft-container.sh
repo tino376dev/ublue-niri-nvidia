@@ -23,20 +23,20 @@ if [ "$action" == "install" ]; then
   sudo ln -s /run/host/run/dbus/system_bus_socket /run/dbus/system_bus_socket
   # microsoft signing keys
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-  # install microsoft edge
+  # repo: microsoft edge
   sudo dnf config-manager addrepo --from-repofile https://packages.microsoft.com/yumrepos/edge/config.repo --save-filename edge
-  sudo dnf -y install microsoft-edge-stable
-  distrobox-export --app microsoft-edge-stable --export-label none
-  # install vscode
+  # repo: vscode
   sudo dnf config-manager addrepo --from-repofile https://packages.microsoft.com/yumrepos/vscode/config.repo --save-filename vscode
-  sudo dnf -y install code-insiders
+  # install and export
+  sudo dnf -y install code-insiders microsoft-edge-stable
   distrobox-export --app code-insiders --export-label none
+  distrobox-export --app microsoft-edge-stable --export-label none
   '
 
 elif [ "$action" == "update" ]; then
   if distrobox list | grep -q "microsoft"; then
     echo "Updating 'microsoft' container..."
-    distrobox-enter --name microsoft -- sudo dnf update -y
+    distrobox-enter --name microsoft -- sudo dnf update -y code-insiders microsoft-edge-stable
   else
     echo "Container 'microsoft' does not exist. Please run install first."
     exit 1

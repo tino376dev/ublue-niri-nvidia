@@ -16,12 +16,10 @@ if [ "$action" == "install" ]; then
 
   # Install packages inside the container
   distrobox-enter --name google -- bash -c '
-  # install google chrome
+  # repo: google chrome
   sudo dnf -y install fedora-workstation-repositories
   sudo dnf config-manager setopt google-chrome.enabled=1
-  sudo dnf -y install google-chrome-stable
-  distrobox-export --app google-chrome --export-label none
-  # install antigravity ide
+  # repo: antigravity ide
   sudo tee /etc/yum.repos.d/antigravity.repo << EOL
 [antigravity-rpm]
 name=Antigravity RPM Repository
@@ -30,14 +28,16 @@ enabled=1
 gpgcheck=0
 EOL
   sudo dnf makecache
-  sudo dnf -y install antigravity
+  # install and export to host
+  sudo dnf -y install antigravity google-chrome-stable
   distrobox-export --app antigravity --export-label none
+  distrobox-export --app google-chrome --export-label none
   '
 
 elif [ "$action" == "update" ]; then
   if distrobox list | grep -q "google"; then
     echo "Updating 'google' container..."
-    distrobox-enter --name google -- sudo dnf update -y
+    distrobox-enter --name google -- sudo dnf update -y antigravity google-chrome-stable
   else
     echo "Container 'google' does not exist. Please run install first."
     exit 1
