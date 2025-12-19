@@ -22,6 +22,7 @@ dnf install -y \
   nu \
   openfortivpn \
   pavucontrol \
+  podman-compose \
   sddm \
   ublue-brew
 
