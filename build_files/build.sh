@@ -44,11 +44,11 @@ assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/lat
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
 
 assets=$(curl -s https://api.github.com/repos/pythops/bluetui/releases/latest | grep browser_download_url)
-curl -sSL $(echo "$assets" | grep bluetui-x86_64-linux | cut -d '"' -f 4) -o /usr/bin/bluetui
+curl -sSL $(echo "$assets" | grep bluetui.*x86_64.*linux | cut -d '"' -f 4) -o /usr/bin/bluetui
 chmod +x /usr/bin/bluetui
 
 assets=$(curl -s https://api.github.com/repos/pythops/impala/releases/latest | grep browser_download_url)
-curl -sSL $(echo "$assets" | grep impala-x86_64-linux | cut -d '"' -f 4) -o /usr/bin/impala
+curl -sSL $(echo "$assets" | grep impala.*x86_64.*linux | cut -d '"' -f 4) -o /usr/bin/impala
 chmod +x /usr/bin/impala
 
 # sddm theme
