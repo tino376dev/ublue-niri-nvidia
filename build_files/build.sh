@@ -15,6 +15,7 @@ dnf install -y \
   awww \
   blueman \
   brightnessctl \
+  foot \
   micro \
   ghostty \
   nautilus \
@@ -33,15 +34,22 @@ dnf remove -y firefox
 dnf clean all
 
 # nushell and official plugin binaries
-curl -s https://api.github.com/repos/nushell/nushell/releases/latest | grep browser_download_url | grep x86_64-unknown-linux-gnu.tar.gz | cut -d '"' -f 4 | xargs curl -LO
-tar -xzf nu-*-x86_64-unknown-linux-gnu.tar.gz
-mv nu*/nu* /usr/bin/
-rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
-
+# curl -s https://api.github.com/repos/nushell/nushell/releases/latest | grep browser_download_url | grep x86_64-unknown-linux-gnu.tar.gz | cut -d '"' -f 4 | xargs curl -LO
+# tar -xzf nu-*-x86_64-unknown-linux-gnu.tar.gz
+# mv nu*/nu* /usr/bin/
+# rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
 
 # get some extra binaries/assets
 assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/latest | grep browser_download_url)
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
+
+assets=$(curl -s https://api.github.com/repos/pythops/bluetui/releases/latest | grep browser_download_url)
+curl -sSL $(echo "$assets" | grep bluetui-x86_64-linux | cut -d '"' -f 4) -o /usr/bin/bluetui
+chmod +x /usr/bin/bluetui
+
+assets=$(curl -s https://api.github.com/repos/pythops/impala/releases/latest | grep browser_download_url)
+curl -sSL $(echo "$assets" | grep impala-x86_64-linux | cut -d '"' -f 4) -o /usr/bin/impala
+chmod +x /usr/bin/impala
 
 # sddm theme
 mkdir -p /usr/share/sddm/themes/
