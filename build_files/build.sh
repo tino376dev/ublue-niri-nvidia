@@ -6,7 +6,6 @@ set -ouex pipefail
 
 # enable copr repos
 dnf copr -y enable scottames/awww
-dnf copr -y enable scottames/ghostty
 dnf copr -y enable ublue-os/packages
 dnf copr -y enable yalter/niri
 
@@ -17,7 +16,6 @@ dnf install -y \
   foot \
   iwd \
   micro \
-  ghostty \
   nautilus \
   niri \
   nu \
@@ -94,6 +92,5 @@ ln -sf /usr/lib/systemd/user/swaybg.service /usr/lib/systemd/user/niri.service.w
 ln -sf /usr/lib/systemd/user/awww-daemon.service /usr/lib/systemd/user/niri.service.wants/awww-daemon.service
 
 dnf copr -y remove scottames/awww
-dnf copr -y remove scottames/ghostty
 dnf copr -y remove ublue-os/packages
 dnf copr -y remove yalter/niri
