@@ -66,7 +66,7 @@ ln -sf /usr/share/backgrounds/dark-blur.png /usr/share/sddm/themes/dark/backgrou
 # iwd config
 mkdir -p /etc/NetworkManager/conf.d/
 cp /ctx/etc/NetworkManager/conf.d/20-iwd.conf /etc/NetworkManager/conf.d/20-iwd.conf
-cp /ctx/etc/iwd/main.conf /etc/iwd/main.conf
+# cp /ctx/etc/iwd/main.conf /etc/iwd/main.conf
 systemctl disable --now wpa_supplicant
 restorecon -R /etc/NetworkManager
 
