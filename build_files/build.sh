@@ -16,6 +16,7 @@ dnf install -y \
   blueman \
   brightnessctl \
   foot \
+  iwd \
   micro \
   ghostty \
   nautilus \
@@ -59,6 +60,14 @@ ln -sf /usr/share/backgrounds/dark-blur.png /usr/share/sddm/themes/dark/backgrou
 
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
+# iwd config
+mkdir -p /etc/NetworkManager/conf.d/
+cp /ctx/etc/NetworkManager/conf.d/20-iwd.conf /etc/NetworkManager/conf.d/20-iwd.conf
+
+systemctl disable --now wpa_supplicant
+restorecon -R /etc/NetworkManager
 
 # podman socket
 systemctl enable podman.socket
