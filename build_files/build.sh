@@ -26,7 +26,8 @@ dnf install -y \
   pavucontrol \
   podman-compose \
   sddm \
-  ublue-brew
+  ublue-brew \
+  wiremix
 
 # remove
 dnf remove -y firefox
