@@ -13,7 +13,6 @@ dnf copr -y enable yalter/niri
 # install
 dnf install -y \
   awww \
-  blueman \
   brightnessctl \
   foot \
   iwd \
@@ -23,7 +22,6 @@ dnf install -y \
   niri \
   nu \
   openfortivpn \
-  pavucontrol \
   podman-compose \
   sddm \
   ublue-brew \
