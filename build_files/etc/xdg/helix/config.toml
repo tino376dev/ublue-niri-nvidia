@@ -1,0 +1,83 @@
+theme = "catppuccin_mocha"
+
+[editor]
+color-modes = true
+bufferline = "multiple"
+cursorline = true
+line-number = "absolute"
+rulers = [120]
+end-of-line-diagnostics = "hint"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+git-ignore = false
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+left = [
+    "mode",
+    "spinner",
+    "file-name",
+]
+right = [
+    "total-line-numbers",
+    "diagnostics",
+    "selections",
+    "register",
+    "position",
+    "file-encoding",
+]
+
+[editor.lsp]
+enable = true
+display-messages = true
+display-progress-messages = true
+display-inlay-hints = true
+
+[keys.normal]
+C-j = [
+    "extend_to_line_bounds",
+    "delete_selection",
+    "paste_after",
+]
+C-k = [
+    "extend_to_line_bounds",
+    "delete_selection",
+    "move_line_up",
+    "paste_before",
+]
+C-down = [
+    "extend_to_line_bounds",
+    "delete_selection",
+    "paste_after",
+]
+C-up = [
+    "extend_to_line_bounds",
+    "delete_selection",
+    "move_line_up",
+    "paste_before",
+]
+C-s = [":write"]
+C-q = [":quit"]
+X = [
+    "extend_to_line_bounds",
+    "select_line_above",
+]
+
+[keys.insert]
+C-s = [
+    "normal_mode",
+    ":write",
+    "insert_mode",
+]
+C-q = [
+    "normal_mode",
+    ":quit",
+]

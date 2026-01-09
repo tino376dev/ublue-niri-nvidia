@@ -31,12 +31,6 @@ dnf remove -y firefox
 # clean
 dnf clean all
 
-# nushell and official plugin binaries
-# curl -s https://api.github.com/repos/nushell/nushell/releases/latest | grep browser_download_url | grep x86_64-unknown-linux-gnu.tar.gz | cut -d '"' -f 4 | xargs curl -LO
-# tar -xzf nu-*-x86_64-unknown-linux-gnu.tar.gz
-# mv nu*/nu* /usr/bin/
-# rm -rf nu-*-x86_64-unknown-linux-gnu.tar.gz nu-*
-
 # get some extra binaries/assets
 assets=$(curl -s https://api.github.com/repos/tino376dev/niri-candy/releases/latest | grep browser_download_url)
 curl -sSL $(echo "$assets" | grep wallpaper.tar.gz | cut -d '"' -f 4) | tar -xz -C /usr/share/backgrounds
@@ -55,14 +49,15 @@ cp -r /ctx/sddm/* /usr/share/sddm/themes
 ln -sf /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/light/backgrounds/wall.png
 ln -sf /usr/share/backgrounds/dark-blur.png /usr/share/sddm/themes/dark/backgrounds/wall.png
 
+# helix config
+cp /ctx/etc/xdg/helix/config.toml /etc/xdg/helix/config.toml
+
 # flatpaks
 /usr/bin/flatpak remote-add --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
 
 # iwd config
 mkdir -p /etc/NetworkManager/conf.d/
 cp /ctx/etc/NetworkManager/conf.d/20-iwd.conf /etc/NetworkManager/conf.d/20-iwd.conf
-# cp /ctx/etc/iwd/main.conf /etc/iwd/main.conf
 systemctl disable --now wpa_supplicant
 restorecon -R /etc/NetworkManager
 
