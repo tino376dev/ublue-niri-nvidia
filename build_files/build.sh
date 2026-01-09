@@ -50,6 +50,7 @@ ln -sf /usr/share/backgrounds/light-blur.png /usr/share/sddm/themes/light/backgr
 ln -sf /usr/share/backgrounds/dark-blur.png /usr/share/sddm/themes/dark/backgrounds/wall.png
 
 # helix config
+mkdir -p /etc/xdg/helix/
 cp /ctx/etc/xdg/helix/config.toml /etc/xdg/helix/config.toml
 
 # flatpaks
