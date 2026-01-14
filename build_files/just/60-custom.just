@@ -10,3 +10,7 @@ google action="install":
 # Setup Microsoft container (usage: just microsoft [install|update])
 microsoft action="install":
     @/usr/bin/setup-microsoft-container.sh {{action}}
+
+# Setup dotfiles (usage: just dotfiles <repo-url>)
+dotfiles url:
+    @/usr/bin/dotfiles.sh {{url}}
